@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 import { moviesRouter } from './routes/movies.js';
 import cors from 'cors';
 import { usersRouter } from './routes/users.js';
+import { users2Router } from './routes/usersInternshipTask.js';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get('/', function (request, response) {
 
 app.use("/movies",moviesRouter);
 app.use("/users",usersRouter);
+app.use("/users2",users2Router);
 
 app.listen(PORT,()=>console.log(`Node App Started in ${PORT}` ))
 
