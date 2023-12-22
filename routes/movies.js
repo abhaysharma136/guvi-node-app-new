@@ -7,6 +7,10 @@ import {
   deleteMovieById,
   updateMovieById,
   CreateMovie,
+  CreateActor,
+  CreateProducer,
+  getAllActors,
+  getAllProducers,
 } from "./helper.js";
 const router = express.Router();
 
@@ -21,7 +25,20 @@ router.get("/", async function (request, response) {
   // console.log(movies)
   response.send(movies);
 });
-
+//GET all Actors
+router.get("/actors", async function (request, response) {
+  //db.movies.find({})
+  const actors = await getAllActors(request);
+  // console.log(movies)
+  response.send(actors);
+});
+//GET all Actors
+router.get("/producers", async function (request, response) {
+  //db.movies.find({})
+  const actors = await getAllProducers(request);
+  // console.log(movies)
+  response.send(actors);
+});
 //GEt Movie By ID
 router.get("/:id", async function (request, response) {
   const { id } = request.params;
@@ -81,5 +98,20 @@ router.post("/add", async function (request, response) {
 
   response.send(result);
 });
-
+//Create Actor
+router.post("/actor", async function (request, response) {
+  const data = request.body;
+  console.log(data);
+  //db.movies.insertMany(data)
+  const result = await CreateActor(data);
+  response.send(result);
+});
+//Create Producer
+router.post("/producer", async function (request, response) {
+  const data = request.body;
+  console.log(data);
+  //db.movies.insertMany(data)
+  const result = await CreateProducer(data);
+  response.send(result);
+});
 export const moviesRouter = router;

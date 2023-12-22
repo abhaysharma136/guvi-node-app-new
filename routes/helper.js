@@ -16,7 +16,14 @@ export async function deleteMovieById(id) {
 export async function CreateMovies(data) {
   return await client.db("guvi-new-db").collection("movies").insertMany(data);
 }
-
+//Create Actor
+export async function CreateActor(data) {
+  return await client.db("guvi-new-db").collection("actor").insertOne(data);
+}
+//Create Producer
+export async function CreateProducer(data) {
+  return await client.db("guvi-new-db").collection("producer").insertOne(data);
+}
 export async function CreateUsers(data) {
   return await client.db("guvi-new-db").collection("users").insertOne(data);
 }
@@ -62,7 +69,22 @@ export async function getAllMovies(request) {
     .find(request.query)
     .toArray();
 }
-
+//Get all Actors Name
+export async function getAllActors() {
+  return await client
+    .db("guvi-new-db")
+    .collection("actor")
+    .find()
+    .toArray();
+}
+//Get all Actors Name
+export async function getAllProducers() {
+  return await client
+    .db("guvi-new-db")
+    .collection("producer")
+    .find()
+    .toArray();
+}
 //Internship Task Add images to Image Array
 export async function updateImageArrayById(id, data) {
   return await client
